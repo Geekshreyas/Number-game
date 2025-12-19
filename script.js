@@ -11,7 +11,7 @@ let numguess = 1;
 let playgame = true;
 let resetBtn;
 
-// Handle the guess submit
+
 submit.addEventListener('click', function(e) {
     e.preventDefault();
     if (!playgame) return;
@@ -21,7 +21,7 @@ submit.addEventListener('click', function(e) {
 });
 
 function validateGuess(guess) {
-    // Guard clauses for input
+    
     if (isNaN(guess)) {
         displayMessage('Please enter a valid number.');
         return;
@@ -30,10 +30,10 @@ function validateGuess(guess) {
         displayMessage('Number must be between 1 and 100.');
         return;
     }
-    // Add guess
+    
     prevguess.push(guess);
     displayGuess();
-    // Evaluate guess
+    
     if (guess === randomnumber) {
         displayMessage(`You guessed it right!`);
         endGame(true);
@@ -62,7 +62,7 @@ function endGame(won) {
     playgame = false;
     userinput.setAttribute('disabled', 'disabled');
     submit.setAttribute('disabled', 'disabled');
-    // Add a reset/new game button
+    
     resetBtn = document.createElement('button');
     resetBtn.textContent = 'Start New Game';
     resetBtn.setAttribute('id', 'resetBtn');
@@ -83,3 +83,4 @@ function resetGame() {
     userinput.value = '';
     resetBtn.remove();
 }
+
