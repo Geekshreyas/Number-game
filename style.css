@@ -1,0 +1,206 @@
+/* ========= COLORFUL NUMBER GUESSING GAME UI ========= */
+
+:root {
+  --primary: #6366f1;     /* Indigo */
+  --secondary: #22c55e;   /* Green */
+  --accent: #ec4899;      /* Pink */
+  --warning: #f59e0b;     /* Amber */
+  --danger: #ef4444;      /* Red */
+  --dark: #0f172a;
+  --light: #ffffff;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #22c55e,
+    #ec4899
+  );
+  background-size: 300% 300%;
+  animation: gradientMove 10s ease infinite;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark);
+}
+
+/* Background animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Main card */
+.wrapper {
+  background: var(--light);
+  width: 92%;
+  max-width: 450px;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative top strip */
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+}
+
+/* Title */
+h1 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.wrapper p {
+  text-align: center;
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+label.guess {
+  font-weight: 600;
+}
+
+/* Input */
+.guessfield {
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 2px solid #e5e7eb;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.guessfield:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+}
+
+/* Button */
+.guesssubmit {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+}
+
+.guesssubmit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(99, 102, 241, 0.45);
+}
+
+.guesssubmit:active {
+  transform: scale(0.98);
+}
+
+/* Result box */
+.resultparas {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  border-left: 4px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.resultparas span,
+.resultparas .guesses {
+  font-weight: 700;
+}
+
+/* Message */
+.loorhi h2 {
+  margin-top: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+/* Message states */
+.loorhi h2.success {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--secondary);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.loorhi h2.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.loorhi h2.info {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Reset button */
+#resetBtn {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: white;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
+}
+
+#resetBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 420px) {
+  .wrapper {
+    padding: 1.4rem;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+}
